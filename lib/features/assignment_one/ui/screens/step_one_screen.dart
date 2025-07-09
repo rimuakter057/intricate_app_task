@@ -38,14 +38,8 @@ class _StepOneScreenState extends State<StepOneScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon:  Icon(Icons.arrow_back_ios_new, size: 16.sp, color: Color(0xFF5A55CA)),
-          label: const Text(
-            'Back',
-            style: TextStyle(
-              color: Color(0xFF5A55CA),
-              fontWeight: FontWeight.w500,
-            ),
-          ),
+          icon:  Icon(Icons.arrow_back_ios_new, size: 14.sp, color: Color(0xFF5A55CA)),
+          label: Text(""),
           style: TextButton.styleFrom(
             foregroundColor: Colors.transparent,
             padding:  EdgeInsets.only(left: 12.w),
