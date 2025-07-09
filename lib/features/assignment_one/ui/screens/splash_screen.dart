@@ -14,10 +14,12 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     Future.delayed(Duration(seconds: 2), () {
       Navigator.pushNamedAndRemoveUntil(
           context, OnBoardingScreen.name, (predicate) => false);
     });
+
     return Scaffold(
       backgroundColor: AppColors.splashBackground,
       body: Center(

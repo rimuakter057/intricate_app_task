@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:intricate/features/assignment_one/ui/screens/splash_screen.dart';
+import 'package:intricate/features/assignment_two/ui/screens/get_product_screen.dart';
 
 import 'app_color.dart';
 import 'app_routes.dart';
@@ -34,7 +36,7 @@ class IntricateApp extends StatelessWidget {
           ),
         ),
       ),
-      initialRoute: '/',
+      initialRoute:SplashScreen.name,
       onGenerateRoute: AppRoutes.onGenerateRoute,
       //initialBinding: ControllerBinder(),
     );

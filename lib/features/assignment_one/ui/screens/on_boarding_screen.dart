@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intricate/app/app_color.dart';
 import 'package:intricate/features/assignment_one/ui/screens/step_one_screen.dart';
+import 'package:intricate/features/assignment_three/ui/screens/offline_api_screen.dart';
+import 'package:intricate/features/assignment_two/ui/screens/get_product_screen.dart';
 
 import '../../../../app/app_text_style.dart';
 import '../../../../app/assets_path.dart';
@@ -23,6 +26,14 @@ class OnBoardingScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            TextButton(
+                onPressed: (){
+              Get.toNamed(ProductScreen.name);
+            }, child: Text("assignment-2")),
+            SizedBox(height: 15.h),
+            TextButton(onPressed: (){
+              Get.toNamed(GetApiScreen.name);
+            }, child: Text("assignment-2")),
             SvgPicture.asset(AssetsPath.onboardingImage, width: 234.w,height: 220.h,),
             SizedBox(height: 32.h),
         Text(
