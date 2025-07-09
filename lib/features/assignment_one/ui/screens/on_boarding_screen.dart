@@ -33,7 +33,7 @@ class OnBoardingScreen extends StatelessWidget {
             SizedBox(height: 15.h),
             TextButton(onPressed: (){
               Get.toNamed(GetApiScreen.name);
-            }, child: Text("assignment-2")),
+            }, child: Text("assignment-3")),
             SvgPicture.asset(AssetsPath.onboardingImage, width: 234.w,height: 220.h,),
             SizedBox(height: 32.h),
         Text(
