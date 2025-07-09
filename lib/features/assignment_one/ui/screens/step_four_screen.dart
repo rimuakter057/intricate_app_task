@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:intricate/features/ui/screens/wake_up_screen.dart';
+import 'package:intricate/app/app_text_style.dart';
+import 'package:intricate/features/assignment_one/ui/screens/reset_screen.dart';
 import '../widgets/custom_progress_bar.dart';
 
-class RoutineScreen extends StatefulWidget {
-  const RoutineScreen({super.key});
+class StepFourScreen extends StatefulWidget {
+  const StepFourScreen({super.key});
 
-  static const String name = '/routine-screen';
+  static const String name = '/primary-goal-screen';
 
   @override
-  _RoutineScreenState createState() => _RoutineScreenState();
+  _StepFourScreenState createState() => _StepFourScreenState();
 }
 
-class _RoutineScreenState extends State<RoutineScreen> {
-  int selectedIndex = 3;
-  int currentStep = 3;
+class _StepFourScreenState extends State<StepFourScreen> {
+  int selectedIndex = 5;
+  int currentStep = 5;
   final int totalSteps = 5;
 
   final List<String> options = [
-    "alm- I need something peaceful and soothing today.",
-    "Energizing- I want something that will get me moving and motivated.",
-    "I'm not sure- I could use either depending on the day.",
-    "I don't need anything too intense right now.",
+    "Find Calm- I am looking for a ways to relax and manage stress.",
+    "Increase Energy- I need help to boosting my motivation and energy levels.",
+    "improve Focus- I want to get back to a more focused, productivity state.",
+    "Overall Wellness- I just want to feel better and take care of natural health.",
   ];
 
   @override
@@ -30,27 +31,28 @@ class _RoutineScreenState extends State<RoutineScreen> {
       appBar: AppBar(
         title: Text(
           'Step $currentStep out of $totalSteps',
-          style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+          style: AppTextStyles.stepTextStyle,
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: Padding(
-        padding: const EdgeInsets.fromLTRB(20, 60, 20, 20),
+        //padding: const EdgeInsets.fromLTRB(20, 60, 20, 20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomProgressBar(progress: progress),
             SizedBox(height: 32),
             Text(
-              "Do you prefer come or energizing routines?",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              "What's your primary goal for using this app'?",
+              style: AppTextStyles.titleTextStyle,
             ),
             SizedBox(height: 8),
             Text(
-              "Do you need a calming routine or something more energizing today?",
-              style: TextStyle(color: Colors.grey[600]),
+              "Let's focus on what you want to achieve",
+              style: AppTextStyles.bodyTextStyle,
             ),
             SizedBox(height: 24),
             ...options.asMap().entries.map((entry) {
@@ -71,16 +73,16 @@ class _RoutineScreenState extends State<RoutineScreen> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: ListTile(
-                    title: Text(text),
+                    title: Text(text,style: AppTextStyles.captionLabelTextStyle,),
                   ),
                 ),
               );
             }),
             Spacer(),
             ElevatedButton(
-              child: Text("Next"),
+              child: Text("Next",style: AppTextStyles.buttonTextStyle,),
               onPressed: () {
-                Navigator.pushNamed(context, WakeUpScreen.name);
+                Navigator.pushNamed(context, ResetPlanScreen.name);
               },
             ),
           ],

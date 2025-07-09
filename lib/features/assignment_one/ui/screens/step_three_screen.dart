@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:intricate/features/ui/screens/primary_screen.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intricate/app/app_text_style.dart';
+
 import '../widgets/custom_progress_bar.dart';
 
-class WakeUpScreen extends StatefulWidget {
-  const WakeUpScreen({super.key});
+class StepThreeScreen extends StatefulWidget {
+  const StepThreeScreen({super.key});
 
-  static const String name = '/wake-up-screen';
+  static const String name = '/routine-screen';
 
   @override
-  _WakeUpScreenState createState() => _WakeUpScreenState();
+  _StepThreeScreenState createState() => _StepThreeScreenState();
 }
 
-class _WakeUpScreenState extends State<WakeUpScreen> {
-  int selectedIndex = 4;
-  int currentStep = 4;
+class _StepThreeScreenState extends State<StepThreeScreen> {
+  int selectedIndex = 3;
+  int currentStep = 3;
   final int totalSteps = 5;
 
   final List<String> options = [
-    "6:00 AM- I start my day early.",
-    "7:00 AM- I woke up around this time.",
-    "8:00 AM- I usually get up a bit later.",
-    "I'm night owl- I tend to wake yp around 9:00 AM or later'.",
+    "alm- I need something peaceful and soothing today.",
+    "Energizing- I want something that will get me moving and motivated.",
+    "I'm not sure- I could use either depending on the day.",
+    "I don't need anything too intense right now.",
   ];
 
   @override
@@ -30,7 +32,7 @@ class _WakeUpScreenState extends State<WakeUpScreen> {
       appBar: AppBar(
         title: Text(
           'Step $currentStep out of $totalSteps',
-          style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+          style: AppTextStyles.stepTextStyle,
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -42,15 +44,15 @@ class _WakeUpScreenState extends State<WakeUpScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomProgressBar(progress: progress),
-            SizedBox(height: 32),
+            SizedBox(height: 32.h),
             Text(
-              "What time do you usually wake up?",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              "Do you prefer come or energizing routines?",
+              style: AppTextStyles.titleTextStyle,
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 8.h),
             Text(
-              "Your wake-up time help us create a balanced routine?",
-              style: TextStyle(color: Colors.grey[600]),
+              "Do you need a calming routine or something more energizing today?",
+              style: AppTextStyles.bodyTextStyle,
             ),
             SizedBox(height: 24),
             ...options.asMap().entries.map((entry) {
@@ -71,16 +73,16 @@ class _WakeUpScreenState extends State<WakeUpScreen> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: ListTile(
-                    title: Text(text),
+                    title: Text(text,style: AppTextStyles.captionLabelTextStyle,),
                   ),
                 ),
               );
             }),
             Spacer(),
             ElevatedButton(
-              child: Text("Next"),
+              child: Text("Next",style: AppTextStyles.buttonTextStyle,),
               onPressed: () {
-                Navigator.pushNamed(context, PrimaryGoalScreen.name);
+                Navigator.pushNamed(context, StepThreeScreen.name);
               },
             ),
           ],

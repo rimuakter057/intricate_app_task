@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intricate/app/app_color.dart';
+import 'package:intricate/app/app_text_style.dart';
+import 'package:intricate/features/assignment_one/ui/screens/step_one_screen.dart';
 import 'home_screen.dart';
-import 'mood_screen.dart';
+
 
 class ResetPlanScreen extends StatelessWidget {
   const ResetPlanScreen({super.key});
@@ -17,26 +22,23 @@ class ResetPlanScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+                 Text(
                   "Here’s your personalized\n7-day reset plan.",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
+                  style:AppTextStyles.headlineTextStyle,
                 ),
                 const SizedBox(height: 16),
-                const Text(
+                 Text(
                   "Each day includes guided tasks to help you\nfeel better,"
                       " one moment at a time.",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black54,
+                  style: GoogleFonts.inter(
+                    fontWeight: FontWeight.w400,       // Regular
+                    fontSize: (100 / 8).sp,      // ≈ 12.5.sp
+                    color: AppColors.commonTextColor,               // চাইলে AppColors.black
                   ),
                 ),
-                const SizedBox(height: 40),
+                 SizedBox(height: 40.h),
                 SizedBox(
                   width: double.infinity,
                   height: 48,
@@ -53,7 +55,7 @@ class ResetPlanScreen extends StatelessWidget {
                 const SizedBox(height: 16),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, MoodSelectionScreen.name);
+                    Navigator.pushNamed(context, StepOneScreen.name);
                   },
                   child: const Text(
                     "Regenerate your plan",

@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:intricate/features/ui/screens/rutine_screen.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intricate/app/app_text_style.dart';
+import 'package:intricate/features/assignment_one/ui/screens/step_four_screen.dart';
 import '../widgets/custom_progress_bar.dart';
 
-class ChallengingPathSelectionScreen extends StatefulWidget {
-  const ChallengingPathSelectionScreen({super.key});
+class StepThreeScreen extends StatefulWidget {
+  const StepThreeScreen({super.key});
 
-  static const String name = '/hardestPath-selection';
+  static const String name = '/wake-up-screen';
 
   @override
-  _ChallengingPathSelectionScreenState createState() =>
-      _ChallengingPathSelectionScreenState();
+  _StepThreeScreenState createState() => _StepThreeScreenState();
 }
 
-class _ChallengingPathSelectionScreenState
-    extends State<ChallengingPathSelectionScreen> {
-  int selectedIndex = 2;
-  int currentStep = 2;
+class _StepThreeScreenState extends State<StepThreeScreen> {
+  int selectedIndex = 4;
+  int currentStep = 4;
   final int totalSteps = 5;
 
   final List<String> options = [
-    "Sleep- I've been struggling to get enough rest.",
-    "Energy- I just don't feel energized throughout the day.",
-    "Motivation- It's hard to stay focused or get started.",
-    "Mood- I'm feeling emotionally drained or overwhelmed.",
+    "6:00 AM- I start my day early.",
+    "7:00 AM- I woke up around this time.",
+    "8:00 AM- I usually get up a bit later.",
+    "I'm night owl- I tend to wake yp around 9:00 AM or later'.",
   ];
 
   @override
@@ -33,7 +32,7 @@ class _ChallengingPathSelectionScreenState
       appBar: AppBar(
         title: Text(
           'Step $currentStep out of $totalSteps',
-          style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+          style: AppTextStyles.stepTextStyle,
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -45,15 +44,15 @@ class _ChallengingPathSelectionScreenState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomProgressBar(progress: progress),
-            SizedBox(height: 32),
+            SizedBox(height: 32.h),
             Text(
-              "What's been hardest for you lately?",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              "What time do you usually wake up?",
+              style: AppTextStyles.titleTextStyle,
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 8.h),
             Text(
-              "Let's pinpoint what's been the most challenging for you.",
-              style: TextStyle(color: Colors.grey[600]),
+              "Your wake-up time help us create a balanced routine?",
+              style: AppTextStyles.bodyTextStyle,
             ),
             SizedBox(height: 24),
             ...options.asMap().entries.map((entry) {
@@ -74,19 +73,16 @@ class _ChallengingPathSelectionScreenState
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: ListTile(
-                    title: Text(text),
+                    title: Text(text,style: AppTextStyles.captionLabelTextStyle,),
                   ),
                 ),
               );
             }),
             Spacer(),
             ElevatedButton(
-              child: Text("Next"),
+              child: Text("Next",style: AppTextStyles.bodyTextStyle,),
               onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("Next step coming soon!")),
-                );
-                Navigator.pushNamed(context, RoutineScreen.name);
+                Navigator.pushNamed(context, StepFourScreen.name);
               },
             ),
           ],

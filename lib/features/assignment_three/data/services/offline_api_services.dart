@@ -1,5 +1,7 @@
-import '../../../core/network_caller/network_caller.dart';
 
+
+
+import '../../../../core/network_caller/network_caller.dart';
 
 class GetApiService {
   static Future<NetworkResponse> fetchAllPosts() async {

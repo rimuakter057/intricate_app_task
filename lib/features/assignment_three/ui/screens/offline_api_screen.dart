@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../data/controllers/get_api_controller.dart';
-import '../data/models/get_api_model.dart';
+import '../../data/controllers/offline_api_controller.dart';
+import '../../data/models/offline_api_model.dart';
 
 
 class GetApiScreen extends StatelessWidget {
   GetApiScreen({super.key});
-
+  static const String name = '/get-api';
   final GetApiController controller = Get.put(GetApiController());
 
   @override

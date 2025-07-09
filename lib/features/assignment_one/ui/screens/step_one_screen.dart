@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intricate/app/app_text_style.dart';
+import 'package:intricate/features/assignment_one/ui/screens/step_two_screen.dart';
 import '../widgets/custom_progress_bar.dart';
-import 'chalengis_screen.dart';
 
-class MoodSelectionScreen extends StatefulWidget {
-  const MoodSelectionScreen({super.key});
+
+class StepOneScreen extends StatefulWidget {
+  const StepOneScreen({super.key});
 
   static const String name = '/mood-selection';
 
   @override
-  _MoodSelectionScreenState createState() => _MoodSelectionScreenState();
+  _StepOneScreenState createState() => _StepOneScreenState();
 }
 
-class _MoodSelectionScreenState extends State<MoodSelectionScreen> {
+class _StepOneScreenState extends State<StepOneScreen> {
   int selectedIndex = 1;
   int currentStep = 1;
   final int totalSteps = 5;
@@ -35,7 +38,7 @@ class _MoodSelectionScreenState extends State<MoodSelectionScreen> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: const Icon(Icons.arrow_back_ios_new, size: 16, color: Color(0xFF5A55CA)),
+          icon:  Icon(Icons.arrow_back_ios_new, size: 16.sp, color: Color(0xFF5A55CA)),
           label: const Text(
             'Back',
             style: TextStyle(
@@ -45,20 +48,16 @@ class _MoodSelectionScreenState extends State<MoodSelectionScreen> {
           ),
           style: TextButton.styleFrom(
             foregroundColor: Colors.transparent,
-            padding: const EdgeInsets.only(left: 12),
+            padding:  EdgeInsets.only(left: 12.w),
           ),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            padding:  EdgeInsets.symmetric(horizontal: 16.w),
             child: Center(
               child: Text(
                 'Step $currentStep out of $totalSteps',
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600,
-                  color: Color(0xFF5A55CA),
-                ),
+                style: AppTextStyles.stepTextStyle,
               ),
             ),
           ),
@@ -70,17 +69,17 @@ class _MoodSelectionScreenState extends State<MoodSelectionScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomProgressBar(progress: progress),
-            SizedBox(height: 32),
+            SizedBox(height: 32.h),
             Text(
               'How are you feeling today?',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: AppTextStyles.titleTextStyle,
             ),
-            SizedBox(height: 8),
+            SizedBox(height: 8.h),
             Text(
               "Let's understand how you're feeling today.",
-              style: TextStyle(color: Colors.grey[600]),
+              style: AppTextStyles.bodyTextStyle,
             ),
-            SizedBox(height: 24),
+            SizedBox(height: 24.h),
             ...options.asMap().entries.map((entry) {
               int idx = entry.key;
               String text = entry.value;
@@ -92,14 +91,14 @@ class _MoodSelectionScreenState extends State<MoodSelectionScreen> {
                   });
                 },
                 child: Container(
-                  margin: EdgeInsets.symmetric(vertical: 6),
+                  margin: EdgeInsets.symmetric(vertical: 6.w),
                   decoration: BoxDecoration(
                     color: isSelected ? Colors.green[100] : Colors.white,
                     border: Border.all(color: Colors.grey.shade300),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: ListTile(
-                    title: Text(text),
+                    title: Text(text,style: AppTextStyles.captionLabelTextStyle,),
                   ),
                 ),
               );
@@ -110,9 +109,9 @@ class _MoodSelectionScreenState extends State<MoodSelectionScreen> {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text("Next step coming soon!")),
                   );
-                  Navigator.pushNamed(context, ChallengingPathSelectionScreen.name);
+                  Navigator.pushNamed(context, StepTwoScreen.name);
                 },
-                child: const Text("Next")),
+                child: Text("Next",style:AppTextStyles.buttonTextStyle ,)),
           ],
         ),
       ),

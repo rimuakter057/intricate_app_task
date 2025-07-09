@@ -1,6 +1,8 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import '../models/get_api_model.dart';
+
+import '../models/offline_api_model.dart';
+
 
 class GetDBHelper {
   static Database? _db;

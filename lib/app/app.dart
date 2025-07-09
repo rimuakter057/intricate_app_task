@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 import 'app_color.dart';
@@ -11,20 +12,25 @@ class IntricateApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    return ScreenUtilInit(
+        designSize: const Size(375, 812),//figma base size
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
-          backgroundColor:Colors.white,
+          backgroundColor: Colors.white,
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-              fixedSize: const Size.fromWidth(double.maxFinite),
+              fixedSize: Size(double.maxFinite, 48.h),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)
+                  borderRadius: BorderRadius.circular(8.r)
               ),
               foregroundColor: Colors.white,
-              backgroundColor: AppColors.themeColor
+              backgroundColor: AppColors.buttonColor
           ),
         ),
       ),
@@ -32,16 +38,7 @@ class IntricateApp extends StatelessWidget {
       onGenerateRoute: AppRoutes.onGenerateRoute,
       //initialBinding: ControllerBinder(),
     );
-
-
-
-
-
-
-    // return GetMaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   title: 'intricate App',
-    //   home: GetApiScreen(),
-    // );
+  }
+    );
   }
 }
